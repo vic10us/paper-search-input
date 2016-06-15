@@ -1,18 +1,20 @@
 {
   "name": "paper-search-input",
-  "version": "1.0.7",
+  "version": "1.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Keith Hill <keith@dexs.ca>"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "An element providing a paper-input-like search, inspired by the search element on https://customelements.io",
   "keywords": [
     "web-component",
     "polymer",
-    "seed"
+    "seed",
+    "search",
+    "input"
   ],
   "main": "paper-search-input.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.com/vic10us/paper-search-input/",
   "ignore": [
     "/.*",
     "/test/"
