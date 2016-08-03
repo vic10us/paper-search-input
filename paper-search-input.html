@@ -250,6 +250,14 @@ Example:
         // Use this to clean up anything you did in `attached`.
       },
 
+      /**
+       * Clear the search box and blur input
+       */
+      clear: function() {
+          this.value = '';
+          this.$['search-field'].blur();
+      },
+      
       // Element Behavior
 
       /**
