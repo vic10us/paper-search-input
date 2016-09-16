@@ -30,6 +30,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <p>An example of <code>&lt;paper-search-input&gt;</code>:</p>
 
     <p>Execute search <button id="execute">Execute</button></p>
+    <p>Clear search <button id="clear">Clear</button></p>
     <p>    
       <paper-search-input author='{"name": "Keith Hill", "image": "http://lorempixel.com/g/300/200/cats/"}'></paper-search-input>
     </p>
@@ -38,7 +39,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <p>
       <paper-search-input id="colors" author='{"name": "Keith Hill", "image": "http://lorempixel.com/g/300/200/cats/"}'></paper-search-input>
     </p>
-
     
     <script>
       var seedElement = document.querySelector('paper-search-input');
@@ -46,7 +46,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       document.querySelector('#execute').addEventListener('click', function() {
         seedElement.executeSearch();
       });
-      
+      document.querySelector('#clear').addEventListener('click', function() {
+        seedElement.clear();
+      });
       document.addEventListener("paper-search-input-execute", function(e) {
         alert('You searched for: ' + e.detail.value);
       });
