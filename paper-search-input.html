@@ -14,6 +14,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
 
 <!--
 An element providing a paper-input-like search element inspired by the search element on https://customelements.io
@@ -32,7 +33,9 @@ Example:
         :host {
             --search-input-styles-base-color: #fe7701;
             --search-input-styles-base-label-color: #fff;
-            --icon-scale-factor-0: var(--icon-scale-factor, 100);
+            --icon-scale-factor-0: 0;
+            --search-border-width-0: 1px;
+            --search-border-radius-0: 2px;
         }
 
         button, input, optgroup, select, textarea {
@@ -63,6 +66,8 @@ Example:
             position: relative;
             vertical-align: top;
             z-index: 1;
+            border: var(--search-border-width, --search-border-width-0) solid var(--search-text-color, --search-input-styles-base-color);
+            border-radius: var(--search-border-radius, --search-border-radius-0);
         }
         
         .search-field {
@@ -130,8 +135,8 @@ Example:
         }
 
         .search-field:focus + .search-label svg, .search-filled svg {
-            -webkit-transform: scale3d(var(--icon-scale-factor-0, 50), var(--icon-scale-factor-0, 50), 1);
-            transform: scale3d(var(--icon-scale-factor-0, 50), var(--icon-scale-factor-0, 50), 1);
+            -webkit-transform: scale(var(--icon-scale-factor-0));
+            transform: scale(var(--icon-scale-factor-0));
         }
 
         .search-field:focus + .search-label .search-label-content, .search-filled .search-label .search-label-content {
@@ -149,7 +154,7 @@ Example:
         }
     </style>
 
-    <div class$="search {{_searchClass(value)}}">
+    <div id="search" class$="search {{_searchClass(value)}}" on-resized="searchResized">
         <input is="iron-input"
                 name="q"
                 class="search-field"
@@ -175,6 +180,10 @@ Example:
   <script>
     Polymer({
       is: 'paper-search-input',
+
+      behaviors: [
+        Polymer.IronResizableBehavior
+      ],
 
       properties: {
         /**
@@ -207,7 +216,12 @@ Example:
           value: false,
           notify: true
         },
-
+        scale: {
+          type: String,
+          value: '0',
+          notify: true,
+          observer: 'scaleChanged'
+        },
         /**
          * Describes the author of the element, but is really just an excuse to
          * show off JSDoc annotations.
@@ -236,7 +250,12 @@ Example:
 
       // Element Lifecycle
 
+      listeners: {
+        'iron-resize': '_onIronResize'
+      },
+
       ready: function() {
+          this.isReady = true;
         // `ready` is called after all elements have been configured, but
         // propagates bottom-up. This element's children are ready, but parents
         // are not.
@@ -271,6 +290,14 @@ Example:
           this.blur();
       },
       
+      scaleChanged: function() {
+          if (this.isReady) {
+              console.log(this.scale);
+              this.customStyle['--icon-scale-factor-0'] = this.scale;
+              this.updateStyles();
+          }
+      },
+
       /**
        * Blur the input
        */
@@ -319,7 +346,22 @@ Example:
       _searchClass: function (v) {
           return (v !== '') ? 'search-filled' : '';
       },
-      
+
+      get parent() {
+        if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+            return this.parentNode.host;
+        }
+        return this.parentNode;
+      },
+
+      _onIronResize: function() {
+          var newScale = '' + (Math.floor(this.$.search.offsetWidth / 15) + 5);
+          if (this.scale !== newScale) {
+              this.scale = newScale;
+          }
+          this.value = newScale;
+      },
+
       /**
        * The `paper-search-input-execute` event is fired whenever `executeSearch` is called.
        *
