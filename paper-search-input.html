@@ -33,7 +33,7 @@ Example:
         :host {
             --search-input-styles-base-color: #fe7701;
             --search-input-styles-base-label-color: #fff;
-            --icon-scale-factor-0: 0;
+            --icon-scale-factor-0: 50;
             --search-border-width-0: 1px;
             --search-border-radius-0: 2px;
         }
@@ -218,7 +218,7 @@ Example:
         },
         scale: {
           type: String,
-          value: '0',
+          value: '50',
           notify: true,
           observer: 'scaleChanged'
         },
@@ -255,7 +255,7 @@ Example:
       },
 
       ready: function() {
-          this.isReady = true;
+          
         // `ready` is called after all elements have been configured, but
         // propagates bottom-up. This element's children are ready, but parents
         // are not.
@@ -264,7 +264,8 @@ Example:
         // necessary), or kick off any processes the element wants to perform.
       },
 
-      attached: function() {
+      attached: function () {
+          this.isReady = true;
         // `attached` fires once the element and its parents have been inserted
         // into a document.
         //
@@ -353,10 +354,12 @@ Example:
         return this.parentNode;
       },
 
-      _onIronResize: function() {
-          var newScale = '' + (Math.floor(this.$.search.offsetWidth / 15) + 5);
-          if (this.scale !== newScale) {
-              this.scale = newScale;
+      _onIronResize: function () {
+          if (this.isReady) {
+              var newScale = '' + (Math.floor(this.$.search.offsetWidth / 15) + 5);
+              if (this.scale !== newScale) {
+                  this.scale = newScale;
+              }
           }
       },
 
