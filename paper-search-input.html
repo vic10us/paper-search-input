@@ -350,7 +350,7 @@ Example:
           return (v !== '') ? 'search-filled' : '';
       },
 
-      _valueChanged: function(o, n) {
+      _valueChanged: function(n, o) {
           this.fire('value-changed', { oldValue: o, newValue: n }); 
       },
 
