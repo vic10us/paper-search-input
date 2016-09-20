@@ -150,6 +150,7 @@ Example:
         .clear-button {
             @apply(--layout-self-center);
             margin-right: 10px;
+            position: relative;
             color: var(--search-text-color, --search-input-styles-base-color);
         }
     </style>
@@ -192,7 +193,8 @@ Example:
         value: {
           type: String,
           value: '',
-          notify: true
+          notify: true,
+          observer: '_valueChanged'
         },
         
         /**
@@ -289,6 +291,7 @@ Example:
       clear: function() {
           this.value = '';
           this.blur();
+          this.fire('value-cleared', {  });
       },
       
       scaleChanged: function() {
@@ -347,6 +350,10 @@ Example:
           return (v !== '') ? 'search-filled' : '';
       },
 
+      _valueChanged: function(o, n) {
+          this.fire('value-changed', { oldValue: o, newValue: n }); 
+      },
+
       get parent() {
         if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
             return this.parentNode.host;
@@ -371,10 +378,25 @@ Example:
        */
 
       /**
+       * The `value-changed` event is fired whenever the value is changed.
+       *
+       * @event value-changed
+       * @detail {{newValue: String, oldValue: String}}
+       */
+
+      /**
+       * The `value-cleared` event is fired whenever clear() is called.
+       *
+       * @event value-cleared
+       * @detail {{ }}
+       */
+
+      /**
        * The enter key was pressed to execute the search
        */
       executeSearch: function() {
         if (this.value.trim() !== '' || this.executeOnEmpty) {
+          
           this.fire('paper-search-input-execute', {value: this.value});
         }
       }
