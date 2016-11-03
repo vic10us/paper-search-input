@@ -1,0 +1,67 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>paper-search-input Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../paper-search-input.html">
+  </head>
+  <body unresolved>
+    
+    <style is="custom-style">
+        .colors {
+          --search-background-color: #518ac0;
+          --search-text-color: #518ac0;
+          --search-label-color: white;
+          --search-width: 500px;
+          --search-border-width: 2px;
+        }
+    </style>
+    
+    <p>An example of <code>&lt;paper-search-input&gt;</code>:</p>
+
+    <p>Execute search <button id="execute">Execute</button></p>
+    <p>Clear search <button id="clear">Clear</button></p>
+    <p>
+      <paper-search-input id="basic"></paper-search-input>
+    </p>
+
+    <p>Example with styling</p>
+    <p>
+      <paper-search-input id="colors" class="colors"></paper-search-input>
+    </p>
+    
+    <p>Example with inline label</p>
+    <p>
+      <paper-search-input id="colors2" class="colors" labels="">
+        <span class="label">Search for something</span>
+      </paper-search-input>
+    </p>
+
+    <script>
+      var seedElement = document.querySelector('paper-search-input');
+      
+      document.querySelector('#execute').addEventListener('click', function() {
+        seedElement.executeSearch();
+      });
+      document.querySelector('#clear').addEventListener('click', function() {
+        seedElement.clear();
+      });
+      document.addEventListener("paper-search-input-execute", function(e) {
+        alert('You searched for: ' + e.detail.value);
+      });
+      
+    </script>
+
+  </body>
+</html>
