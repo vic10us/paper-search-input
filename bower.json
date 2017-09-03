@@ -1,6 +1,6 @@
 {
   "name": "paper-search-input",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "authors": [
     "Keith Hill <keith@dexs.ca>"
   ],
@@ -20,16 +20,41 @@
     "/test/"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.2.0",
-    "iron-input": "PolymerElements/iron-input#^1.0.10",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1",
-    "iron-icon": "PolymerElements/iron-icon#^1.0.0",
-    "iron-iconset-svg": "polymerelements/iron-iconset-svg#^1.0.0",
-    "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0",
-    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.5"
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "iron-input": "^2.0.1",
+    "iron-icon": "^2.0.1",
+    "paper-icon-button": "^2.0.1",
+    "iron-resizable-behavior": "^2.0.1",
+    "iron-flex-layout": "^2.0.0",
+    "iron-iconset-svg": "^2.1.0",
+    "iron-icons": "^2.0.1"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "web-component-tester": "^4.0.0"
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.9",
+        "iron-input": "PolymerElements/iron-input#^1.0.10",
+        "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.3.1",
+        "iron-icon": "PolymerElements/iron-icon#^1.0.0",
+        "iron-iconset-svg": "polymerelements/iron-iconset-svg#^1.0.0",
+        "paper-icon-button": "PolymerElements/paper-icon-button#^1.0.0",
+        "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.5"
+      },
+      "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "web-component-tester": "^4.0.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
+      }
+    }
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
   }
 }
