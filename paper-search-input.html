@@ -173,7 +173,7 @@ Example:
                 <path d="M5.817,606.299c7.729,7.614,20.277,7.614,28.007,0L192.448,450.2c44.267,35.333,100.622,56.586,162.067,56.586c142.211,0,257.487-113.439,257.487-253.393C612.003,113.439,496.727,0,354.516,0S97.028,113.439,97.009,253.393c0,65.424,25.424,124.879,66.802,169.834L5.8,578.714C-1.929,586.328-1.929,598.686,5.817,606.299z" ></path>
             </svg>
             <span hidden$="[[_focused]]" class="search-label-content label">
-                    &#8203;<content>{{_getLabel(_focused, value, label)}}</content>
+                    &#8203;<slot class="label">{{_getLabel(_focused, value, label)}}</slot>
             </span>
         </label>
         <paper-icon-button class="clear-button" icon="backspace" on-tap="clear"></paper-icon-button>
@@ -268,10 +268,8 @@ Example:
       },
 
       ready: function() {
-          console.log(this.$.labelText);
           this.isReady = true;
           this.notifyResize();
-          console.log(this.offsetWidth);
         // `ready` is called after all elements have been configured, but
         // propagates bottom-up. This element's children are ready, but parents
         // are not.

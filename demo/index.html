@@ -37,39 +37,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <p>Clear search <button id="clear">Clear</button></p>
       <template>
         <paper-search-input id="basic"></paper-search-input>
+        <script>
+          var seedElement = document.querySelector('paper-search-input#basic');
+          document.querySelector('#execute').addEventListener('click', function() {
+            seedElement.executeSearch();
+          });
+          document.querySelector('#clear').addEventListener('click', function() {
+            seedElement.clear();
+          });
+          seedElement.addEventListener("paper-search-input-execute", function(e) {
+            alert('You searched for: ' + e.detail.value);
+          });
+        </script>
+      </template>
+    </demo-snippet>
+
+    <p>Example with inline label</p>
+    <demo-snippet>
+      <template>
+        <paper-search-input id="colors2">
+          <span>Search for something cool...</span>
+        </paper-search-input>
       </template>
     </demo-snippet>
 
     <p>Example with styling</p>
     <demo-snippet>
       <template>
+        <custom-style>
+          <style is="custom-style" include="demo-pages-shared-styles">
+            .colors {
+              --search-background-color: #518ac0;
+              --search-text-color: #518ac0;
+              --search-label-color: white;
+              --search-width: 500px;
+              --search-border-width: 2px;
+            }
+          </style>
+        </custom-style>
         <paper-search-input id="colors" class="colors"></paper-search-input>
       </template>
     </demo-snippet>
-  
-    <p>Example with inline label</p>
-    <demo-snippet>
-      <template>
-        <paper-search-input id="colors2" class="colors" labels="">
-          <span class="label">Search for something</span>
-        </paper-search-input>
-      </template>
-    </demo-snippet>
-
-    <script>
-      var seedElement = document.querySelector('paper-search-input');
-      
-      document.querySelector('#execute').addEventListener('click', function() {
-        seedElement.executeSearch();
-      });
-      document.querySelector('#clear').addEventListener('click', function() {
-        seedElement.clear();
-      });
-      document.addEventListener("paper-search-input-execute", function(e) {
-        alert('You searched for: ' + e.detail.value);
-      });
-      
-    </script>
 
   </body>
 </html>
