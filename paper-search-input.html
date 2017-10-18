@@ -50,7 +50,7 @@ Example:
             /*@apply(--layout-horizontal);*/
             background: var(--search-background-color, var(--search-input-styles-base-color));
             font-size: 24px;
-            margin: 0 auto;
+            margin: var(--search-margin, 0 auto);;
             overflow: hidden;
             width: var(--search-width);
             height: var(--search-height);
@@ -78,6 +78,7 @@ Example:
             padding-bottom: 0.8em;
             width: 100%;
             z-index: 10;
+            height: var(--search-field-height);
         }
 
         .search-field:focus {
