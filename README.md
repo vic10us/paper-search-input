@@ -1,7 +1,23 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/vic10us/paper-search-input)
+
 # paper-search-input
 
-An element providing a paper-input-like search element inspired by the search element on  [`customelements.io`](https://customelements.io)
+An element providing a paper-input-like search element inspired by the search element on  [`customelements.io`](https://customelements.io) (now replaced by [`webcomponents.org`](https://www.webcomponents.org))
 
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="paper-search-input.html">
+    <paper-search-input></paper-search-input>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<paper-search-input></paper-search-input>
+```
 
 ## Dependencies
 
