@@ -1,4 +1,5 @@
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg?style=flat-square)](https://www.webcomponents.org/element/vic10us/paper-search-input)
+![Vaadin Directory availability](https://img.shields.io/badge/Vaadin%20Directory-available-green.svg?style=flat-square&colorB=00b4f0&link=https://vaadin.com/directory)
 
 # paper-search-input
 
