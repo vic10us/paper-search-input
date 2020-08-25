@@ -1,0 +1,38 @@
+{
+  "description": "An element providing a paper-input-like search, inspired by the search element on https://customelements.io",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "seed",
+    "search",
+    "input"
+  ],
+  "homepage": "https://github.com/vic10us/paper-search-input/",
+  "name": "@vic10us/paper-search-input",
+  "version": "3.0.0",
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "main": "paper-search-input.js",
+  "author": "Keith Hill <keith@dexs.ca>",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "@polymer/iron-input": "^3.0.0",
+    "@polymer/iron-icon": "^3.0.0",
+    "@polymer/iron-icons": "^3.0.0",
+    "@polymer/iron-iconset-svg": "^3.0.0",
+    "@polymer/iron-resizable-behavior": "^3.0.0",
+    "@polymer/iron-flex-layout": "^3.0.0",
+    "@polymer/paper-icon-button": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-component-page": "^4.0.0",
+    "wct-browser-legacy": "^1.0.1",
+    "@webcomponents/webcomponentsjs": "^2.0.0"
+  }
+}
