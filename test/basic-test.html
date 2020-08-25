@@ -13,11 +13,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <script src="../../../wct-browser-legacy/browser.js"></script>
 
     <!-- Step 1: import the element to test -->
-    <link rel="import" href="../paper-search-input.html">
+    <script type="module" src="../paper-search-input.js"></script>
   </head>
   <body>
 
@@ -30,31 +30,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       </template>
     </test-fixture>
 
-    <script>
-      suite('<paper-search-input>', function() {
+    <script type="module">
+import '../paper-search-input.js';
+suite('<paper-search-input>', function() {
 
-        var myEl;
+  var myEl;
 
-        setup(function() {
-          myEl = fixture('paper-search-input-fixture');
-          myEl.value = 'testValue';
-        });
+  setup(function() {
+    myEl = fixture('paper-search-input-fixture');
+    myEl.value = 'testValue';
+  });
 
-        test('defines the "author" property', function() {
-          assert.equal(myEl.author.name, 'Keith Andrew Hill (aka: vic10us)');
-          assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
-        });
+  test('defines the "author" property', function() {
+    assert.equal(myEl.author.name, 'Keith Andrew Hill (aka: vic10us)');
+    assert.equal(myEl.author.image, 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg');
+  });
 
-        test('fires lasers', function(done) {
-          myEl.addEventListener('paper-search-input-execute', function(event) {
-            assert.equal(event.detail.value, 'testValue');
-            done();
-          });
-          myEl.executeSearch();
-        });
+  test('fires lasers', function(done) {
+    myEl.addEventListener('paper-search-input-execute', function(event) {
+      assert.equal(event.detail.value, 'testValue');
+      done();
+    });
+    myEl.executeSearch();
+  });
 
-      });
-    </script>
+});
+</script>
 
   </body>
 </html>
